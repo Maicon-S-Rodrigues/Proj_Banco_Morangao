@@ -8,6 +8,14 @@ namespace Proj_Banco_Morangao
 {
     internal class Cartao
     {
+        public double Credito { get; set; }
+        public int VencimentoFatura { get; set; }
 
+        public Cartao (double credito, int vencimentoFatura)
+
+        {
+            Credito = credito;
+            VencimentoFatura = vencimentoFatura;
+        }
     }
 }
