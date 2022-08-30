@@ -6,7 +6,7 @@ namespace Proj_Banco_Morangao
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
