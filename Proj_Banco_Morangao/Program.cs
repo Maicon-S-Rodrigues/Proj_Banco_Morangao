@@ -119,11 +119,20 @@ namespace Proj_Banco_Morangao
             numeroAgencia = int.Parse(Console.ReadLine());
 
             novaAgencia = new Agencia(numeroAgencia, new Endereco(rua, cidade, numeroEndereco));
-            agencias.Add(novaAgencia);
+            agencias.Add(novaAgencia);//adiciona a nova agencia na lista (lista instanciada nas primeiras linhas do PROGRAM ^^^^^^
+            PausaParaContinuar();
+
+            ////////////////////////////////--- exemplo de como printar na tela todas as Agencias cadastradas na lista ---//////////////////
+            //Console.Clear();
+            //foreach (Agencia a in agencias)
+            //{
+            //    Console.WriteLine("\t\t-----------------------------------------------\n" +
+            //                        a.MostrarAgenciaCadastrada());
+            //}
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // instancia um novo objeto do tipo "AGENCIA" e como um dos seus parametros é "ENDERECO", o "new" já instancia tambem um
             //novo ojeto do tipo "ENDERECO" que dessa forma sera associado a essa nova agencia
 
-            PausaParaContinuar();
         }
         #endregion //region para as telas
         static void PausaParaContinuar()
