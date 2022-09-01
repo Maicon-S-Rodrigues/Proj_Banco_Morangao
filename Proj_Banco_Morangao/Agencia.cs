@@ -17,5 +17,10 @@ namespace Proj_Banco_Morangao
             this.NumeroId = numeroId;
             this.Endereco = endereco;
         }
+
+        public string MostrarAgenciaCadastrada()
+        {
+            return "\n\t\tAgencia id: " + this.NumeroId + "\n\t\tEndereço da Agência: " + Endereco.MostrarEndereco(); 
+        }
     }
 }

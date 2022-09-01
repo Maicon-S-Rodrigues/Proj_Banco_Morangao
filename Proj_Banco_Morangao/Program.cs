@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Proj_Banco_Morangao
 {
     internal class Program
     {
+        // as listas para salvar os cadastros devem ficar aqui no inicio
+        static List<Agencia> agencias = new List<Agencia>();
+        //----------------------------------------------------------
         #region TELAS E NAVEGAÇÃO
         static void TelaInicial()
         {
@@ -98,24 +102,36 @@ namespace Proj_Banco_Morangao
         static void TelaCadastroAgencia ()
         {
             //variaveis para auxiliar no cadastro de varias agencias
-            int numeroAgencia, numeroEndereco;
-            String rua, cidade;
+            int numeroAgencia=0, numeroEndereco=0;
+            String rua="", cidade="";
+            Agencia novaAgencia;
 
             Console.Clear();
             Console.WriteLine("\n\t\tCADASTRO DE UMA NOVA AGÊNCIA:");
             Console.WriteLine("\n\t\tInforme o endereço:\n");
-            Console.WriteLine("\t\tCidade: ");
+            Console.Write("\t\tCidade: ");
             cidade = Console.ReadLine();
-            Console.WriteLine("\t\tRua: ");
+            Console.Write("\t\tRua: ");
             rua = Console.ReadLine();
-            Console.WriteLine("\t\tNúmero: ");
+            Console.Write("\t\tNúmero: ");
             numeroEndereco = int.Parse(Console.ReadLine());
-            Console.WriteLine("\n\t\tNúmero de ID para essa Agência: ");
+            Console.Write("\n\t\tNúmero de ID para essa Agência: ");
             numeroAgencia = int.Parse(Console.ReadLine());
 
-            Console.ReadKey();
+            novaAgencia = new Agencia(numeroAgencia, new Endereco(rua, cidade, numeroEndereco));
+            agencias.Add(novaAgencia);
+            // instancia um novo objeto do tipo "AGENCIA" e como um dos seus parametros é "ENDERECO", o "new" já instancia tambem um
+            //novo ojeto do tipo "ENDERECO" que dessa forma sera associado a essa nova agencia
+
+            PausaParaContinuar();
         }
         #endregion //region para as telas
+        static void PausaParaContinuar()
+        {
+            Console.WriteLine("\n\n\t\tAperte qualquer tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
+        }
         static void Main(string[] args)
         {
             ///para não esquecer:
@@ -124,7 +140,10 @@ namespace Proj_Banco_Morangao
             ///assim, quando for aberto o programa de novo, primeiro ele devera ler esses arquivos texto para ja
             ///carregar tudo que foi feito na sessão anterior
 
+
+
             TelaInicial();
+
         }
     }
 }
