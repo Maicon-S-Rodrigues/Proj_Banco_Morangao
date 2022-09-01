@@ -27,7 +27,12 @@ namespace Proj_Banco_Morangao
 
         public String MostrarEndereco ()
         {
-            return "Cidade: " + this.Cidade + "\nRua: " + this.Rua + "\nNúmero: " + this.Numero;
+            return "Cidade: " + this.Cidade + "\nRua: " + this.Rua + ", " + "Número: " + this.Numero;
+        }
+
+        public string getData () // metodo para gravar no arquivo de texto
+        {
+            return this.Rua + ";" + this.Cidade + ";" + this.Numero + ";";
         }
     }
 }

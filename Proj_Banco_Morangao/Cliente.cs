@@ -13,6 +13,9 @@ namespace Proj_Banco_Morangao
         public DateTime DataNascimentoCliente { get; set; }
         public String TelefoneCliente { get; set; }
         public Endereco EnderecoCliente { get; set; }
+        public Agencia AgenciaCliente { get; set; }
+        public ContaCorrente ContaCorrente { get; set; }
+
         public double FaixaSalarialCliente { get; set; }
         public int TipoDeConta { get; set; }
         public int NumeroDaConta { get; set; } ///Este não está sendo adicionado diretamente no construtor pois o construtor é para definir uma nova pessoa

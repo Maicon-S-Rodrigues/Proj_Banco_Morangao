@@ -11,9 +11,9 @@ namespace Proj_Banco_Morangao
         public double SaldoContaPoupanca { get; set; }
 
 
-        public ContaPoupanca(int numeroDaConta, Cliente donoDaConta, Agencia agenciaDoCliente,
-            bool cartaoDeCredito, int numeroDoCartao, double saldoEmConta, double saldoChequeEspecial)
-            : base(numeroDaConta, donoDaConta, agenciaDoCliente, cartaoDeCredito, numeroDoCartao, saldoEmConta, saldoChequeEspecial)
+        public ContaPoupanca(int numeroDaConta, bool cartaoDeCredito, int numeroDoCartao,
+            double saldoEmConta, double saldoChequeEspecial)
+            : base(numeroDaConta, cartaoDeCredito, numeroDoCartao, saldoEmConta, saldoChequeEspecial)
         {
             this.SaldoContaPoupanca = 0;
         }
