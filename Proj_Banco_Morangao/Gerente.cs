@@ -8,9 +8,9 @@ namespace Proj_Banco_Morangao
 {
     internal class Gerente : Funcionario
     {
-        public Gerente (String nome, int matricula, bool gerencia, Agencia agencia) : base (nome, matricula, gerencia, agencia)
+        public Gerente (String nome, int matricula, Agencia agencia) : base (nome, matricula, agencia)
         {
-            this.Gerencia = gerencia;
+            
         }
 
         public String MostrarDadosGerente ()
@@ -27,7 +27,21 @@ namespace Proj_Banco_Morangao
         {
 
         }
+        
+        public void VerFuncionariosCadastrados ()
+        {
 
+        }
+
+        public void VerAgenciasCadastradas()
+        {
+
+        }
+
+        public void VerClientesCadastrados()
+        {
+
+        }
         public bool AprovarEmprestimo ()
         {
             return false;

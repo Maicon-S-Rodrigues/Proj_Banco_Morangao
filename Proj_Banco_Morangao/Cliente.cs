@@ -15,15 +15,15 @@ namespace Proj_Banco_Morangao
         public Endereco EnderecoCliente { get; set; }
         public Agencia AgenciaCliente { get; set; }
         public ContaCorrente ContaCorrente { get; set; }
-
+        public ContaPoupanca ContaPoupanca { get; set; }
         public double FaixaSalarialCliente { get; set; }
         public int TipoDeConta { get; set; }
-        public int NumeroDaConta { get; set; } ///Este não está sendo adicionado diretamente no construtor pois o construtor é para definir uma nova pessoa
-        //o numero da conta então só será atribuído a essa pessoa quando o GERENTE aprovar sua abertura de conta.
+        public int NumeroDaConta { get; set; }
 
-        public Cliente (String nome, String cpf, DateTime dataNascimento, String telefone, Endereco endereco, double faixaSalarial, int tipoDeConta)
+        public Cliente (int numeroDaConta, String nome, String cpf, DateTime dataNascimento, String telefone, Endereco endereco, double faixaSalarial, int tipoDeConta)
         {
             this.NomeCliente = nome;
+            this.NumeroDaConta = numeroDaConta;
             this.CpfCliente = cpf;
             this.DataNascimentoCliente = dataNascimento;
             this.TelefoneCliente = telefone;

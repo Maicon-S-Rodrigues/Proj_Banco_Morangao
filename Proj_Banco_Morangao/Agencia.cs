@@ -10,12 +10,17 @@ namespace Proj_Banco_Morangao
     {
         public int NumeroId { get; set; }
         public Endereco Endereco { get; set; }
+        public Funcionario Funcionario { get; set; }
 
         public Agencia (int numeroId, Endereco endereco)
 
         {
             this.NumeroId = numeroId;
             this.Endereco = endereco;
+        }
+        public void AdicionarFuncionario(Funcionario funcionario)
+        {
+            this.Funcionario = funcionario;
         }
 
         public string MostrarAgenciaCadastrada()

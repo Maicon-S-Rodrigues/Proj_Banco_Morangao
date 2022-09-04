@@ -10,21 +10,20 @@ namespace Proj_Banco_Morangao
     {
         public String Nome { get; set; }
         public int Matricula { get; set; }
-        public bool Gerencia { get; set; }
         public Agencia Agencia { get; set; }
 
-        public Funcionario (String nome, int matricula, bool gerencia, Agencia agencia)
+        public Funcionario()
+        {
+
+        }
+
+        public Funcionario (String nome, int matricula, Agencia agencia)
         {
             this.Nome = nome;
             this.Matricula = matricula;
-            this.Gerencia = gerencia;
             this.Agencia = agencia;
         }
 
-        public void VerificarTipoDeConta ()
-        {
-
-        }
         public void AprovarCadastroCliente()
         {
 

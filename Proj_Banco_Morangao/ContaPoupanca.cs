@@ -11,11 +11,9 @@ namespace Proj_Banco_Morangao
         public double SaldoContaPoupanca { get; set; }
 
 
-        public ContaPoupanca(int numeroDaConta, bool cartaoDeCredito, int numeroDoCartao,
-            double saldoEmConta, double saldoChequeEspecial)
-            : base(numeroDaConta, cartaoDeCredito, numeroDoCartao, saldoEmConta, saldoChequeEspecial)
+        public ContaPoupanca(int id, Agencia agencia, double saldoContaPoupanca) : base(id, agencia)
         {
-            this.SaldoContaPoupanca = 0;
+            this.SaldoContaPoupanca = saldoContaPoupanca;
         }
 
         public void AdicionarRendimento() ///calculo de porcentagem de rendimento mensal na poupança 

@@ -12,17 +12,15 @@ namespace Proj_Banco_Morangao
         public String Cidade { get; set; }
         public int Numero { get; set; }
 
-        public Endereco (String rua, String cidade, int numero)
-        {
-            this.Rua = rua;
-            this.Cidade = cidade;
-            this.Numero = numero;
-        }
         public Endereco ()
         {
-            this.Rua = "";
-            this.Cidade = "";
-            this.Numero = 0;
+
+        }
+        public Endereco (String rua, int numero, String cidade)
+        {
+            this.Rua = rua;
+            this.Numero = numero;
+            this.Cidade = cidade;
         }
 
         public String MostrarEndereco ()

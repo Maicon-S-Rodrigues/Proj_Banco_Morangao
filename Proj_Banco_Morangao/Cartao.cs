@@ -17,5 +17,20 @@ namespace Proj_Banco_Morangao
             Credito = credito;
             VencimentoFatura = vencimentoFatura;
         }
+
+        void ExtratoCartao ()
+        {
+
+        }
+
+        void VerFatura()
+        {
+
+        }
+
+        void GerarFatura()
+        {
+
+        }
     }
 }
