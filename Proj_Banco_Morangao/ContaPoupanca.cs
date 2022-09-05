@@ -16,9 +16,5 @@ namespace Proj_Banco_Morangao
             this.SaldoContaPoupanca = saldoContaPoupanca;
         }
 
-        public void AdicionarRendimento() ///calculo de porcentagem de rendimento mensal na poupança 
-        {
-
-        }
     }
 }

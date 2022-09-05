@@ -15,7 +15,8 @@ namespace Proj_Banco_Morangao
         //public int NumeroDoCartao { get; set; }
         public double SaldoEmConta { get; set; }
         public double ChequeEspecial { get; set; } // saldo de limite especial
-        public Pagamento Registro { get; set; }
+        public List<Pagamento> Registro { get; set; }
+        public bool UtilizarCheque { get; set; }
         //public ContaPoupanca contaPoupanca { get; set; }
         //public Cartao CartaoCredito { get; set; }
 
@@ -42,6 +43,7 @@ namespace Proj_Banco_Morangao
             //this.NumeroDoCartao = numeroDoCartao;
             this.SaldoEmConta = saldoEmConta;
             this.ChequeEspecial = chequeEspecial;
+            this.Registro = new List<Pagamento> ();
         }
 
         public String VerSaldo ()
@@ -59,18 +61,12 @@ namespace Proj_Banco_Morangao
 
         }
 
-        public void SolicitarEmprestimo ()
-        {
-
-        }
 
         public void TransferirValor ()
         {
 
         }
 
-
-        ///no desenho está faltando essa parte de extrato para registros de movimentação da conta corrente
         public String VerExtrato()
         {
             return ""; ///chamar extrato para mostrar na tela
