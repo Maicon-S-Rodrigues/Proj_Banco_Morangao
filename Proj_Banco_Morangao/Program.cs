@@ -404,12 +404,26 @@ namespace Proj_Banco_Morangao
                 {
                     if (idAcesso == cliente.NumeroDaConta)
                     {
-                        Console.Clear();
-                        Console.WriteLine("\n\t\tAcesso Permitido!");
-                        Console.WriteLine("\n\t\tBem vindo " + cliente.NomeCliente + "!!!");
-                        login = true;
-                        PausaParaContinuar();
-                        break;
+                        if (cliente.Acesso == true)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("\n\t\tAcesso Permitido!");
+                            Console.WriteLine("\n\t\tBem vindo " + cliente.NomeCliente + "!!!");
+                            login = true;
+                            PausaParaContinuar();
+                            break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("\n\t\tAcesso Negado!");
+                            Console.WriteLine("\n\t\tPor favor, aguarde até que um de nossos colaboradores" +
+                                              "\n\t\tLibere seu ID para acesso!");
+                            PausaParaContinuar();
+                            login = true; ///só para quebrar o laço e voltar para a tela anterior
+                            break;
+                        }
+                       
                     }
                     else
                     {
@@ -418,8 +432,6 @@ namespace Proj_Banco_Morangao
                     }
                 }
             } while (login == false);
-
-            Console.WriteLine("\n\t\tDEU CERTO!!!!!!!");
             PausaParaContinuar();
         }
         #endregion

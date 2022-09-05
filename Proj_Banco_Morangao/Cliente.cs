@@ -19,6 +19,10 @@ namespace Proj_Banco_Morangao
         public double FaixaSalarialCliente { get; set; }
         public int TipoDeConta { get; set; }
         public int NumeroDaConta { get; set; }
+        
+        ///novo: 
+        ///Serve para o funcionario marcar se a conta está ativa ou não
+        public bool Acesso { get; set; }
 
         public Cliente (int numeroDaConta, String nome, String cpf, DateTime dataNascimento, String telefone, Endereco endereco, double faixaSalarial, int tipoDeConta)
         {
@@ -30,8 +34,20 @@ namespace Proj_Banco_Morangao
             this.EnderecoCliente = endereco;
             this.FaixaSalarialCliente = faixaSalarial;
             this.TipoDeConta = tipoDeConta;
+            this.Acesso = false; ///sera mudado para true quando o funcionario aprovar cadastro
         }
 
+        public bool VerificarAcesso()
+        {
+            if (this.Acesso == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public void SolicitarAbertura ()
         {
 
