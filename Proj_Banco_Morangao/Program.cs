@@ -107,6 +107,34 @@ namespace Proj_Banco_Morangao
         }
         static void AprovarCadastros()
         {
+            Console.Clear();
+            int cont = 0;
+            foreach (Cliente clientes in clientes)
+            {
+                if (clientes.Acesso == false)
+                {
+                    cont++;
+                }
+            }
+            Console.Write("\n\t\tQuantidade de pedidos: " + cont);
+            if (cont > 0)
+            {
+                foreach (Cliente cliente in clientes)
+                {
+                    if (cliente.Acesso == false)
+                    {
+                        Console.WriteLine("\n\t\tID: " + cliente.NumeroDaConta + "\t|| Nome: " + cliente.NomeCliente);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n\t\tLista de Pedidos vazia!");
+                PausaParaContinuar();
+            }
+            Console.WriteLine("-----------------------------------------------------------------------------");
+            Console.Write("\n\t\tDigite o ID do Cliente para ver seu pedido: ");
+            Console.ReadKey(); /////////////parei aqui, falta ler o id desejado para continuar
 
         }
         static void TelaAcessoGerente()
@@ -437,6 +465,10 @@ namespace Proj_Banco_Morangao
         #endregion
 
         #endregion //region para as telas
+        public void VerPedidosDeConta()
+        {
+            
+        }
         static void PausaParaContinuar()
         {
             Console.WriteLine("\n\n\t\tAperte qualquer tecla para continuar...");

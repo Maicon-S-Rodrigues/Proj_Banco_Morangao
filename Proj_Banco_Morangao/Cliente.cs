@@ -57,5 +57,19 @@ namespace Proj_Banco_Morangao
         {
 
         }
+
+        public string MostrarPedidoDeAbertura()
+        {
+            return "\n\t\tDados do Cliente:\n" +
+                   "\n\t\tNome: " + this.NomeCliente +
+                   "\n\t\tCPF: " + this.CpfCliente +
+                   "\n\t\tData de Nascimento: " + DataNascimentoCliente.ToShortDateString() +
+                   "\n\t\tTelefone: " + this.TelefoneCliente +
+                   "\n\t\tEndereço: " + this.EnderecoCliente +
+                   "\n\t\tAgência ao qual a Conta foi Solicitada abertura: " + this.AgenciaCliente +
+                   "\n\t\tFaixa Salarial informada pelo Cliente: " + this.FaixaSalarialCliente +
+                   "\n\t\tTipo de Conta solicitada pelo Cliente: " + this.TipoDeConta +
+                   "\n\t\tNúmero de ID cadastrado pelo Cliente que solicita abertura: " + this.NumeroDaConta;
+        }
     }
 }
