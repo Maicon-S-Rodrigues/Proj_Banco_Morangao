@@ -33,15 +33,32 @@ namespace Proj_Banco_Morangao
             return "\nSaldo atual em Conta Corrente:    R$: " + this.SaldoEmConta;
         }
 
-        public void Sacar ()
+        public bool Sacar (double valor)
         {
-
+            if (this.SaldoEmConta < valor)
+            {
+                return false;
+            }
+            else
+            {
+                this.SaldoEmConta -= valor;
+                return true;
+            }
         }
 
-        public void Depositar ()
+        public bool Depositar (double valorDeposito)
         {
-
+            if (valorDeposito <= 0)
+            {            
+                return false;
+            }
+            else
+            {
+                this.SaldoEmConta = this.SaldoEmConta + valorDeposito;
+                return true;
+            }
         }
+    
         public String VerExtrato()
         {
             return ""; ///chamar extrato para mostrar na tela

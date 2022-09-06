@@ -44,8 +44,6 @@ namespace Proj_Banco_Morangao
                         break;
                 }
             } while (opcao != 0);
-
-
         }
 
         #region OPERAÇÕES RELACIONADAS AOS FUNCIONARIOS
@@ -161,9 +159,9 @@ namespace Proj_Banco_Morangao
                             int opc = 0;
                             do
                             {
-                                Console.Write("\n\t\t0 - VOLTAR");
-                                Console.Write("\n\t\t1 - APROVAR");
-                                Console.Write("\n\t\t2 - RECUSAR");
+                                Console.Write("\n\t\t0 - VOLTAR     ");
+                                Console.Write("\n\t\t1 - APROVAR    ");
+                                Console.Write("\n\t\t2 - RECUSAR    ");
                                 opc = int.Parse(Console.ReadLine());
                                 switch (opc)
                                 {
@@ -216,7 +214,6 @@ namespace Proj_Banco_Morangao
                 Console.WriteLine("\t\t1 - Aprovar Cadastro de um Cliente -");
                 Console.WriteLine("\t\t2 - Cadastrar um novo Funcionário -");
                 Console.WriteLine("\t\t3 - Cadastrar uma nova Agência -");
-                Console.WriteLine("\t\t4 - Ver lista de pedidos de Empréstimo -");
                 Console.Write("\t\tOpção: ");
                 opcao = int.Parse(Console.ReadLine());
 
@@ -503,7 +500,7 @@ namespace Proj_Banco_Morangao
                             Console.WriteLine("\n\t\tBem vindo " + cliente.NomeCliente + "!!!");
                             login = true;
                             PausaParaContinuar();
-                            TelaInicial(); ///////////////////////////////////////////////////////
+                            TelaInicialConta(cliente); ///////////////////////////////////////////////////////
                             break;
                         }
                         else if (cliente.Acesso == false)
@@ -526,6 +523,74 @@ namespace Proj_Banco_Morangao
                 PausaParaContinuar();
                 TelaInicioClientes();
             } while (login == false);
+        }
+        #endregion
+
+        #region OPERAÇÕES RELACIONADAS AS MOVIMENTAÇÕES NA CONTA DO CLIENTE
+
+        static void TelaInicialConta (Cliente clienteAtivo)
+        {
+            int opcao = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("\n\t\tBem vindo ao Banco Morangão " + clienteAtivo.NomeCliente);
+                Console.WriteLine("\n\t\tAgência: " + clienteAtivo.AgenciaCliente.NumeroId);
+                Console.WriteLine("\n\n\t\tSaldo: R$: " + clienteAtivo.ContaCorrente.SaldoEmConta);
+                Console.WriteLine("\n\n\t\tO que deseja fazer?");
+                Console.WriteLine("\t\t0 - Encerrar Sessão -");
+                Console.WriteLine("\t\t1 - Sacar -");
+                Console.WriteLine("\t\t2 - Depositar -");
+                Console.Write("\t\tOpção: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        ///sacar
+                        Console.Clear();
+                        Console.Write("\n\t\tQual valor deseja sacar? R$: ");
+                        double valorSaque = double.Parse(Console.ReadLine());
+                        bool transacao = clienteAtivo.ContaCorrente.Sacar(valorSaque);
+                        if(transacao == true)
+                        {
+                            Console.WriteLine("\n\t\tSaque efetuado com sucesso!");
+                            PausaParaContinuar();
+                            TelaInicialConta(clienteAtivo);
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\t\tImpossível Sacar! Valor pedido é maior que o Saldo Disponível!");
+                            PausaParaContinuar();
+                            TelaInicialConta(clienteAtivo);
+                        }
+                        break;
+
+                    case 2:
+                        //depositar
+                        Console.Clear();
+                        Console.Write("\n\t\tQual valor deseja Depositar R$: ");
+                        double valorDeposito = double.Parse(Console.ReadLine());
+                        bool situacao = clienteAtivo.ContaCorrente.Sacar(valorDeposito);
+                        if (situacao == true)
+                        {
+                            Console.WriteLine("\n\t\tDepósito efetuado com sucesso!");
+                            PausaParaContinuar();
+                            TelaInicialConta(clienteAtivo);
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\t\tImpossível Depositar esse valor!");
+                            PausaParaContinuar();
+                            TelaInicialConta(clienteAtivo);
+                        }
+                        break;
+
+                    case 0:
+                        Console.WriteLine("\n\n\t\tVolte sempre" + clienteAtivo.NomeCliente + "!\n\n\t\tEncerrando Sessão...");
+                        break;
+                }
+            } while (opcao != 0);
         }
         #endregion
 
