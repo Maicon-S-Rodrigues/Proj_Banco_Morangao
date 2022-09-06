@@ -108,33 +108,101 @@ namespace Proj_Banco_Morangao
         static void AprovarCadastros()
         {
             Console.Clear();
-            int cont = 0;
-            foreach (Cliente clientes in clientes)
+
+            int idCliente;
+            bool atendimento = false;
+            do
             {
-                if (clientes.Acesso == false)
+                int cont = 0;
+                foreach (Cliente clientes in clientes)
                 {
-                    cont++;
-                }
-            }
-            Console.Write("\n\t\tQuantidade de pedidos: " + cont);
-            if (cont > 0)
-            {
-                foreach (Cliente cliente in clientes)
-                {
-                    if (cliente.Acesso == false)
+                    if (clientes.Acesso == false)
                     {
-                        Console.WriteLine("\n\t\tID: " + cliente.NumeroDaConta + "\t|| Nome: " + cliente.NomeCliente);
+                        cont++;
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("\n\t\tLista de Pedidos vazia!");
-                PausaParaContinuar();
-            }
-            Console.WriteLine("-----------------------------------------------------------------------------");
-            Console.Write("\n\t\tDigite o ID do Cliente para ver seu pedido: ");
-            Console.ReadKey(); /////////////parei aqui, falta ler o id desejado para continuar
+                Console.Write("\n\t\tQuantidade de pedidos: " + cont + "\n");
+                if (cont > 0)
+                {
+                    foreach (Cliente cliente in clientes)
+                    {
+                        if (cliente.Acesso == false)
+                        {
+                            Console.WriteLine("\n\t\tID: " + cliente.NumeroDaConta + "\t|| Nome: " + cliente.NomeCliente);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\n\t\tLista de Pedidos vazia!");
+                    PausaParaContinuar();
+                    TelaInicioFuncionarios();
+                }
+                Console.Write("-----------------------------------------------------------------------------");
+                Console.Write("\n\n\t\tDigite o ID do Cliente para ver seu pedido\n\n\t\tOU\n\n\t\tAperte '0' para sair");
+                idCliente = int.Parse(Console.ReadLine());
+                Console.Clear();
+                if (idCliente == 0)
+                {
+                    TelaInicioFuncionarios();
+                }
+                else
+                {
+                    foreach (Cliente cliente in clientes)
+                    {
+                        if (idCliente == cliente.NumeroDaConta && cliente.Acesso == false)
+                        {
+                            Console.Write("\n\t\tSOLICITAÇÃO DE ABERTURA DE CONTA:\n\n");
+                            Console.Write(cliente.MostrarPedidoDeAbertura());
+
+                            Console.WriteLine("\n\n\t\tO cliente solicita uma " + cliente.VerTipoDeConta());
+
+                            Console.Write("\n-----------------------------------------------------------------------------------------\n");
+                            int opc = 0;
+                            do
+                            {
+                                Console.Write("\n\t\t0 - VOLTAR");
+                                Console.Write("\n\t\t1 - APROVAR");
+                                Console.Write("\n\t\t2 - RECUSAR");
+                                opc = int.Parse(Console.ReadLine());
+                                switch (opc)
+                                {
+                                    case 0:
+                                        AprovarCadastros();
+                                        break;
+
+                                    case 1:
+                                        cliente.LiberarAcesso();
+                                        atendimento = true;
+                                        AprovarCadastros();
+                                        break;
+
+                                    case 2:
+                                        Console.Clear();
+                                        atendimento = false;
+                                        Console.WriteLine("\n\t\tPedido Recusado!");
+                                        PausaParaContinuar();
+                                        AprovarCadastros();
+                                        break;
+                                }
+                            } while (opc != 0);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\t\tNúmero de ID inválido!\n\t\tEscolha um ID da lista para continuar.");
+                        }
+                    }
+                    if (atendimento == true)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\n\t\tPedido de Cadastro foi APROVADO!");
+                        Console.WriteLine("\n\t\tPor favor, iforme o Cliente que seu ID de Acesso foi liberado!");
+                    }
+                    PausaParaContinuar();
+                }
+
+            } while (atendimento == false);
 
         }
         static void TelaAcessoGerente()
@@ -156,6 +224,7 @@ namespace Proj_Banco_Morangao
                 {
                     case 1:
                         ///Ver lista de pedidos de aprovação de Cadastro de conta
+                        AprovarCadastros();
                         break;
 
                     case 2:
@@ -165,10 +234,6 @@ namespace Proj_Banco_Morangao
                     case 3:
                         ///Abrir formulario de cadastro para gerar uma nova agência
                         TelaCadastroAgencia();
-                        break;
-                    case 4:
-
-                        ///ver lista de pedidos de Empréstimo para aprovar/negar os pedidos
                         break;
                 }
             } while (opcao != 0);
@@ -280,7 +345,7 @@ namespace Proj_Banco_Morangao
                     Console.WriteLine("\n\t\tAgência não encontrada!");
                 }
                 else if (cadastro == true)
-                {                  
+                {
                     Console.WriteLine("\n\t\tCadastro efetuado com sucesso!");
                 }
                 PausaParaContinuar();
@@ -397,13 +462,12 @@ namespace Proj_Banco_Morangao
                 {
                     if (numeroAgencia == a.NumeroId)
                     {
-                        novoCliente = new Cliente(idCliente, nome, cpf, dataNascimento, telefone, new Endereco(rua, numeroEndereco, cidade), faixaSalarial, tipoDeConta);
+                        novoCliente = new Cliente(idCliente, a, nome, cpf, dataNascimento, telefone, new Endereco(rua, numeroEndereco, cidade), faixaSalarial, tipoDeConta);
                         clientes.Add(novoCliente);
                         cadastro = true;
                         break;
                     }
                 }
-
                 if (cadastro == false)
                 {
                     Console.WriteLine("\n\t\tAgência não encontrada!");
@@ -430,7 +494,7 @@ namespace Proj_Banco_Morangao
 
                 foreach (Cliente cliente in clientes)
                 {
-                    if (idAcesso == cliente.NumeroDaConta)
+                    if (cliente.NumeroDaConta == idAcesso)
                     {
                         if (cliente.Acesso == true)
                         {
@@ -439,36 +503,33 @@ namespace Proj_Banco_Morangao
                             Console.WriteLine("\n\t\tBem vindo " + cliente.NomeCliente + "!!!");
                             login = true;
                             PausaParaContinuar();
+                            TelaInicial(); ///////////////////////////////////////////////////////
                             break;
                         }
-                        else
+                        else if (cliente.Acesso == false)
                         {
                             Console.Clear();
                             Console.WriteLine("\n\t\tAcesso Negado!");
                             Console.WriteLine("\n\t\tPor favor, aguarde até que um de nossos colaboradores" +
                                               "\n\t\tLibere seu ID para acesso!");
                             PausaParaContinuar();
-                            login = true; ///só para quebrar o laço e voltar para a tela anterior
+                            TelaInicioClientes();
                             break;
                         }
-                       
-                    }
-                    else
-                    {
-                        Console.WriteLine("\n\t\tDesculpe. O ID de acesso infomado é inválido ou não existe!");
-                        PausaParaContinuar();
-                    }
+                        else if (idAcesso != cliente.NumeroDaConta)
+                        {
+                            
+                        }
+                    }                  
                 }
+                Console.WriteLine("\n\t\tDesculpe. O ID de acesso infomado é inválido ou não existe!");
+                PausaParaContinuar();
+                TelaInicioClientes();
             } while (login == false);
-            PausaParaContinuar();
         }
         #endregion
 
         #endregion //region para as telas
-        public void VerPedidosDeConta()
-        {
-            
-        }
         static void PausaParaContinuar()
         {
             Console.WriteLine("\n\n\t\tAperte qualquer tecla para continuar...");
