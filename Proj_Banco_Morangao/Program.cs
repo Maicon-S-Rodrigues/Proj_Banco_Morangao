@@ -15,7 +15,6 @@ namespace Proj_Banco_Morangao
         #region TELAS E NAVEGAÇÃO
         static void TelaInicial()
         {
-            //bool valido = false;
             int opcao = 0;
             do
             {
@@ -25,10 +24,7 @@ namespace Proj_Banco_Morangao
                 Console.WriteLine("\t\t1 - Acesso para Clientes -");
                 Console.WriteLine("\t\t2 - Acesso para Funcionários -");
                 Console.Write("\t\tOpção: ");
-                //do
-                //{
 
-                //} while (valido = false);
                 opcao = int.Parse(Console.ReadLine());
 
                 switch (opcao)
@@ -45,6 +41,7 @@ namespace Proj_Banco_Morangao
 
                     case 0:
                         Console.WriteLine("Encerrando...");
+                        Environment.Exit(0);
                         ///aqui precisa salvar tudo que foi feito em arquivo texto antes de fechar de fato o programa...
                         break;
                 }
