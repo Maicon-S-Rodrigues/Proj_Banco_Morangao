@@ -73,7 +73,7 @@ namespace Proj_Banco_Morangao
                    "\n\t\tData de Nascimento: " + DataNascimentoCliente.ToShortDateString() +
                    "\n\t\tTelefone: " + this.TelefoneCliente +
                    "\n\t\tEndereço: " + this.EnderecoCliente.MostrarEndereco() +
-                   "\n\t\tAgência ao qual a Conta foi Solicitada abertura: " + this.AgenciaCliente.NumeroId +
+                   "\n\n\t\tAgência ao qual a Conta foi Solicitada abertura: " + this.AgenciaCliente.NumeroId +
                    "\n\t\tFaixa Salarial informada pelo Cliente: " + this.FaixaSalarialCliente +
                    "\n\t\tNúmero de ID cadastrado pelo Cliente que solicita abertura: " + this.NumeroDaConta;
         }

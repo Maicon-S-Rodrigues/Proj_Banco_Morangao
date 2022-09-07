@@ -15,36 +15,7 @@ namespace Proj_Banco_Morangao
 
         public String MostrarDadosGerente ()
         {
-            return base.MostrarDadosDoFuncionario() + "\nCapacidades Administrativas como Gerente estão ativas para este Funcionário.";
-        }
-
-        public void CadastrarFuncionario()
-        {
-
-        }
-
-        public void CadastrarAgencia()
-        {
-
-        }
-        
-        public void VerFuncionariosCadastrados ()
-        {
-
-        }
-
-        public void VerAgenciasCadastradas()
-        {
-
-        }
-
-        public void VerClientesCadastrados()
-        {
-
-        }
-        public bool AprovarEmprestimo ()
-        {
-            return false;
-        }
+            return base.MostrarDadosDoFuncionario() + "\n\t\tCapacidades Administrativas como Gerente estão ativas para este Funcionário.";
+        }  
     }
 }

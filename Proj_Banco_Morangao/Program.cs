@@ -15,6 +15,7 @@ namespace Proj_Banco_Morangao
         #region TELAS E NAVEGAÇÃO
         static void TelaInicial()
         {
+            //bool valido = false;
             int opcao = 0;
             do
             {
@@ -24,6 +25,10 @@ namespace Proj_Banco_Morangao
                 Console.WriteLine("\t\t1 - Acesso para Clientes -");
                 Console.WriteLine("\t\t2 - Acesso para Funcionários -");
                 Console.Write("\t\tOpção: ");
+                //do
+                //{
+
+                //} while (valido = false);
                 opcao = int.Parse(Console.ReadLine());
 
                 switch (opcao)
@@ -530,11 +535,13 @@ namespace Proj_Banco_Morangao
 
         static void TelaInicialConta (Cliente clienteAtivo)
         {
+            bool sair = false;
             int opcao = 0;
             do
             {
                 Console.Clear();
                 Console.WriteLine("\n\t\tBem vindo ao Banco Morangão " + clienteAtivo.NomeCliente);
+                Console.WriteLine("\n\t\t" + clienteAtivo.VerTipoDeConta());
                 Console.WriteLine("\n\t\tAgência: " + clienteAtivo.AgenciaCliente.NumeroId);
                 Console.WriteLine("\n\n\t\tSaldo: R$: " + clienteAtivo.ContaCorrente.SaldoEmConta);
                 Console.WriteLine("\n\n\t\tO que deseja fazer?");
@@ -571,7 +578,7 @@ namespace Proj_Banco_Morangao
                         Console.Clear();
                         Console.Write("\n\t\tQual valor deseja Depositar R$: ");
                         double valorDeposito = double.Parse(Console.ReadLine());
-                        bool situacao = clienteAtivo.ContaCorrente.Sacar(valorDeposito);
+                        bool situacao = clienteAtivo.ContaCorrente.Depositar(valorDeposito);
                         if (situacao == true)
                         {
                             Console.WriteLine("\n\t\tDepósito efetuado com sucesso!");
@@ -585,12 +592,14 @@ namespace Proj_Banco_Morangao
                             TelaInicialConta(clienteAtivo);
                         }
                         break;
-
                     case 0:
-                        Console.WriteLine("\n\n\t\tVolte sempre" + clienteAtivo.NomeCliente + "!\n\n\t\tEncerrando Sessão...");
+                        Console.WriteLine("\n\n\t\tVolte sempre " + clienteAtivo.NomeCliente + "!\n\n\t\tEncerrando Sessão...");
+                        sair = true;
                         break;
                 }
-            } while (opcao != 0);
+            } while (sair == false);
+            PausaParaContinuar();
+            TelaInicioClientes();
         }
         #endregion
 
@@ -604,7 +613,7 @@ namespace Proj_Banco_Morangao
         static void Main(string[] args)
         {
             ///para não esquecer:
-            ///ao programa ser iniciado pela primeira vez, fazer os cadastros e ser usado, ao fechar ira antes salvar em arquivos texto
+            ///ao programa ser iniciado pela primeira vez, fazer os cadastros a serem usados, ao fechar irá antes salvar em arquivos texto
             ///tudo que tiver sido feito de movimentação importante... cadastros, listas, objetos, etc
             ///assim, quando for aberto o programa de novo, primeiro ele devera ler esses arquivos texto para ja
             ///carregar tudo que foi feito na sessão anterior

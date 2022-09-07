@@ -18,31 +18,24 @@ namespace Proj_Banco_Morangao
         {
 
         }
-        public ContaCorrente (int numeroDaConta,/*, bool cartaoDeCreditoint numeroDoCartao, */ Agencia agencia, double saldoEmConta)
+        public ContaCorrente (int numeroDaConta, Agencia agencia, double saldoEmConta)
         {
             this.NumeroDaConta = numeroDaConta;
             this.Agencia = agencia;
-            //this.CartaoDeCredito = cartaoDeCredito;
-            //this.NumeroDoCartao = numeroDoCartao;
             this.SaldoEmConta = saldoEmConta;
             this.Registro = new List<Pagamento> ();
         }
 
-        public String VerSaldo ()
-        {
-            return "\nSaldo atual em Conta Corrente:    R$: " + this.SaldoEmConta;
-        }
-
         public bool Sacar (double valor)
         {
-            if (this.SaldoEmConta < valor)
-            {
-                return false;
-            }
-            else
+            if (valor > 0 && this.SaldoEmConta > valor)
             {
                 this.SaldoEmConta -= valor;
                 return true;
+            }
+            else
+            {                
+                return false;
             }
         }
 
