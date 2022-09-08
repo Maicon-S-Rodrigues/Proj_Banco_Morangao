@@ -40,7 +40,7 @@ namespace Proj_Banco_Morangao
                         break;
 
                     case 0:
-                        Console.WriteLine("Encerrando...");
+                        Console.WriteLine("\n\t\tEncerrando...");
                         Environment.Exit(0);
                         ///aqui precisa salvar tudo que foi feito em arquivo texto antes de fechar de fato o programa...
                         break;
@@ -273,17 +273,6 @@ namespace Proj_Banco_Morangao
             //novo ojeto do tipo "ENDERECO" que dessa forma sera associado a essa nova agencia
 
         }
-        //static void mostrar()      
-        //{
-        //    Console.Clear();
-        //    foreach (Agencia a in agencias)
-        //    {
-        //        Console.WriteLine("\t\t-----------------------------------------------\n" +
-        //                            a.MostrarAgenciaCadastrada());
-
-        //    }
-        // PausaParaContinuar();
-        //}
         static void TelaCadastroFuncionario()
         {
             String nome;
@@ -591,12 +580,12 @@ namespace Proj_Banco_Morangao
                         break;
                     case 0:
                         Console.WriteLine("\n\n\t\tVolte sempre " + clienteAtivo.NomeCliente + "!\n\n\t\tEncerrando Sessão...");
-                        sair = true;
+                        PausaParaContinuar();
+                        TelaInicioClientes();
                         break;
                 }
             } while (sair == false);
-            PausaParaContinuar();
-            TelaInicioClientes();
+
         }
         #endregion
 

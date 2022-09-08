@@ -23,12 +23,6 @@ namespace Proj_Banco_Morangao
             this.Matricula = matricula;
             this.Agencia = agencia;
         }
-
-        public void AprovarCadastroCliente()
-        {
-
-        }
-
         public String MostrarDadosDoFuncionario ()
         {
             return "\nNome: " + Nome + "\nAgencia: " + Agencia + "\nNº Matrícula: " + Matricula;

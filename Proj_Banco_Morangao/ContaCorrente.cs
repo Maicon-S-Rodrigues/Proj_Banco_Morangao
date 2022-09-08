@@ -52,13 +52,13 @@ namespace Proj_Banco_Morangao
             }
         }
     
-        public String VerExtrato()
-        {
-            return ""; ///chamar extrato para mostrar na tela
-        }
-        public  void RegistrarTransacao () ///gerar extrato
-        {
+       // public String VerExtrato()
+       // {
+        //    return ""; ///chamar extrato para mostrar na tela
+       // }
+        //public  void RegistrarTransacao () ///gerar extrato
+        //{
 
-        }
+        //}
     }
 }

@@ -28,9 +28,9 @@ namespace Proj_Banco_Morangao
             return "\n\t\tCidade: " + this.Cidade + "\n\t\tRua: " + this.Rua + ", " + "Número: " + this.Numero;
         }
 
-        public string getData () // metodo para gravar no arquivo de texto
-        {
-            return this.Rua + ";" + this.Cidade + ";" + this.Numero + ";";
-        }
+        //public string getData () // metodo para gravar no arquivo de texto
+        //{
+        //    return this.Rua + ";" + this.Cidade + ";" + this.Numero + ";";
+        //}
     }
 }
